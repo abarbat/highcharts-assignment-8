@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="uft-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maternity leave data</title>
+  <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/highcharts-3d.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+
+<body>
+
+<div id="heading-container">
+
+<h1>Differences in maternity leave across the world</h1>
+<p id="byline">By Adriana Barbat</p>
+
+</div>
+
+<div id="body-container">
+
+<p>The World's Women 2015 is an United Nations agency that reports statistics relating to topics such as work, education and poverty among women around the world. </p>
+
+<div id="chart1">
+<div id="container" style="height: 400px; margin: 0 auto"></div> <!--when I make this 900 i looks too stretched out but when I make it 800, you can see the body background at the sides-->
+
+<p class="sourcetext">Source: <a href="http://unstats.un.org/unsd/gender/chapter4/chapter4.html"> The World's Women 2015: Trends and Statistics by United Nations Statistics Division </a></p>
+</div>
+
+<h2>Maternity leave</h2>
+<p>Data from the agency's website, under the topic of Work, show how lengths of maternity leave differ among regions of the world. The data show that most countries offer maternity leave between 10 and 15 weeks, usually paid by either social security benefits or the employer. The cash benefits during leave grant women 100 percent of their salary in about 100 countries and less than 100 percent in about 50 countries. Other systems are in place in the rest of the countries: Some countries have flat-rate benefits, some benefits depend on type of employment, some pay a certain percentage for the first few weeks and then a lower percentage for the remainder of the time.</p>
+
+<p>The only regions in which leave is offered for more than 20 weeks are the "<a href="http://unstats.un.org/unsd/methods/m49/m49regin.htm#developed">developed regions</a>." The statistics reveal that the average number of weeks for maternity leave is about 15. About 50 countries, the leave is paid by the employer, and in about 90, it is paid by social security benefits. In the rest, it is either paid by a combination of the two, paid by a separate agency unpaid or unclear.</p>
+
+<h2>Paternity leave</h2>
+<p>Data have also been collected for paternity leave. These figures show that fathers in most countries don't receive any paternity leave, although the number of countries that offer leave has increased from 38 in 1994 to 78 in 2013 (the last time data was collected). This type of leave is 100 percent paid in most countries that offer it. Iceland and Slovenia offer the most paternity leave: 90 days.</p>
+
+
+<div id="chart2">
+<div id="paternity" style="height: 400px"></div>
+
+<p class="sourcetext">Source: <a href="http://unstats.un.org/unsd/gender/chapter4/chapter4.html"> The World's Women 2015: Trends and Statistics by United Nations Statistics Division </a></p>
+</div>
+
+<h2>Maternity leave in the U.S.</h2>
+
+<p>Compared the the rest of the world, the number of weeks granted to women for maternity leave is below average at 12 weeks. It is also one of three countries (and the only country classified as a "developed region") that does not offer any kind of cash benefit for women on leave. The U.S. is included in the 48.9 percent of countries that does not grant parternity leave.</p>
+<h3>Analysis</h3>
+<p>With respect to maternity leave, the U.S. seems to lag behind much of the rest of the developed world. Maternity leave gives mothers time to recover and bond with their children after childbirth. (It appears that lack of maternal presence <a href="http://www.child-encyclopedia.com/parental-leave/according-experts/effects-parental-employment-and-parental-leave-child-health-and">negatively affects child development</a>, although too little research has been done on the subject to yield conclusive results.) Mothers in the U.S. do not have as great of an opportunity to be with their children because, as leave is unpaid in the U.S., they don't have any kind of income to rely on when they can't work. Single mothers and poor mothers are under even more pressure to return to work early. There is less information on how <a href="http://www.child-encyclopedia.com/parental-leave/according-experts/effects-parental-employment-and-parental-leave-child-health-and">paternity leave affects children</a>.</p>
+
+
+
+
+<script>
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Weeks of maternity leave per region in 2015'
+        },
+        xAxis: {
+            categories: ['Developed regions', 'Latin America & the Caribbean', 'Northern Africa', 'Sub-Saharan Africa', 'Oceania', 'Caucasus and Central Asia', 'Western Asia', 'South-Eastern Asia', 'Southern Asia', 'Eastern Asia']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Countries'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'N/A',
+            data: [0, 0, 0, 0, 1, 0, 1, 0, 0, 0]
+        },
+            {
+            name: 'Fewer than 10 weeks',
+            data: [0, 1, 1, 8, 0, 0, 7, 3, 1, 0]
+        }, {
+            name: 'Between 10 and 15 weeks',
+            data: [11, 28, 4, 38, 4, 0, 4, 5, 5, 3]
+        },
+	 	   {
+            name: 'Between 16 and 20 weeks',
+            data: [22, 5, 0, 1, 0, 8, 1, 2, 1, 1]
+        },
+           {
+            name: 'More than 20 weeks',
+            data: [16, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        }
+         ]
+    });
+});
+</script>
+
+<script>
+$(function () {
+    $('#paternity').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: 'Global paternity leave in 2013'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Countries',
+            data: [
+                ['None',   48.9],
+                {
+                    name: '1 - 6 days',
+                    y: 19.5,
+                    sliced: true,
+                    selected: true
+                },
+                ['7 or more days',    25.3],
+                ['No data',   6.3]
+            ]
+        }]
+    });
+});
+</script>
+</div>
+
+
+
+</body>
+</html>
